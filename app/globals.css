@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --Main: #feb005;
+  --Secondary: #fec100;
+  --Text: #2b262d;
+  --Another: rgba(216, 168, 0, 0.7);
+}
+
+body {
+  color: var(--Text);
+  background: white;
+  display: flex;
+  height: 100dvh;
+}
+
+*::-webkit-scrollbar {
+  width: 0.5px;
+}
