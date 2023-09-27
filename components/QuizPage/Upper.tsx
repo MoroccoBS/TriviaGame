@@ -3,7 +3,6 @@ import { VscSettings } from "react-icons/vsc";
 import BackGround from "../BackGround";
 import { useRouter } from "next/navigation";
 import { useQuestionsStore } from "@/store/store";
-import { useEffect } from "react";
 
 export default function Upper() {
   const { resetQuestions } = useQuestionsStore();

@@ -4,7 +4,6 @@ import { useQuestionsStore } from "@/store/store";
 import Select from "./Select";
 import _ from "lodash";
 import React, { useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
 
 interface QuestionsProps {
   data?: Result;
@@ -19,7 +18,6 @@ export default function Questions({ data, setResultPage }: QuestionsProps) {
     selectedAnswerIndex,
     updateCorrectAnswer,
     updateIncorrectAnswer,
-    result,
   } = useQuestionsStore();
   const [shuffledChoices, setShuffledChoices] = useState<string[]>([]);
   const [correctAnswer, setCorrectAnswer] = useState<string | undefined>("");
@@ -51,8 +49,12 @@ export default function Questions({ data, setResultPage }: QuestionsProps) {
     }
   };
 
-  const handleCorrectAnswer = () => {
-    updateCorrectAnswer();
+  const handleAnswer = (isCorrect: boolean) => {
+    if (isCorrect) {
+      updateCorrectAnswer();
+    } else {
+      updateIncorrectAnswer();
+    }
     if (data && activeQuestion + 1 < data?.length) {
       setTimeout(() => {
         setCheck(false);
@@ -64,23 +66,14 @@ export default function Questions({ data, setResultPage }: QuestionsProps) {
         setResultPage(true);
       }, 1500);
     }
-    console.log("correct");
+  };
+
+  const handleCorrectAnswer = () => {
+    handleAnswer(true);
   };
 
   const handleIncorrectAnswer = () => {
-    updateIncorrectAnswer();
-    if (data && activeQuestion + 1 < data?.length) {
-      setTimeout(() => {
-        setCheck(false);
-        setActiveQuestion(activeQuestion + 1);
-      }, 1500);
-    } else {
-      setTimeout(() => {
-        setCheck(false);
-        setResultPage(true);
-      }, 1500);
-    }
-    console.log("Incorecct");
+    handleAnswer(false);
   };
 
   return (

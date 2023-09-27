@@ -1,5 +1,4 @@
 "use client";
-// import { AiOutlineArrowLeft } from "react-icons/ai";
 import Image from "next/image";
 import Profile from "@/public/Profile.jpeg";
 import Category from "./Category";
@@ -8,6 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useQuestionsStore } from "@/store/store";
 import { VscSettings } from "react-icons/vsc";
 import Arrow from "@/public/arrow.svg";
+
 export default function Upper() {
   const path = usePathname();
   const router = useRouter();

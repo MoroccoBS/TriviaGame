@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 interface CounterProps {
   activeQuestion: number;
 }
@@ -7,8 +5,7 @@ interface CounterProps {
 export default function Counter({ activeQuestion }: CounterProps) {
   console.log(activeQuestion);
   const calculateStrokeDasharray = () => {
-    const progress = ((activeQuestion + 1) / 20) * 125;
-    return progress;
+    return ((activeQuestion + 1) / 20) * 125;
   };
   return (
     <div className="w-20 h-20 bg-white rounded-full absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
